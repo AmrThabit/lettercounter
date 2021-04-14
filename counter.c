@@ -42,6 +42,11 @@ int main()
     if (curchar == ' ') spaces++;
   }
 
+  // Create buffer length
+  // If buffer length is 0, set it to 1 to avoid division by zero
+  int buffer_len = strlen(buffer);
+  if (buffer_len == 0) buffer_len = 1;
+
   // Create the letter analysis table
   printf("\n\nLetter Analysis Complete!");
   printf("\n\nLetter    Occurrences    Percentage\n");
@@ -49,7 +54,7 @@ int main()
   for (i = 0; i < 26; i++) {
     printf("%-10c%-15d%-15.2f\n", i + 65,
                                count[i],
-                               (((float) count[i]) / strlen(buffer)) * 100);
+                               (((float) count[i]) / buffer_len) * 100);
   }
   printf("\nTotal spaces: %d\n", spaces);
 
