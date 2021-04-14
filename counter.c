@@ -38,6 +38,9 @@ int main()
     if (curchar >= 65 && curchar <= 90) count[curchar - 65]++;
     else other++;
   }
+  
+  int buffer_len = strlen(buffer);
+  if (buffer_len == 0) buffer_len = 1;
 
   // Create the letter analysis table
   printf("\n\nLetter Analysis Complete!");
@@ -46,12 +49,12 @@ int main()
   for (i = 0; i < COUNT_SIZE; i++) {
     printf("%-10c%-15d%-15.2f\n", i + 65,
                                count[i],
-                               (((float) count[i]) / strlen(buffer)) * 100);
+                               (((float) count[i]) / buffer_len) * 100);
   }
   // Output the number of other characters
   printf("%-10s%-15d%-15.2f\n","Other",
                               other,
-                              (((float) count[i]) / strlen(buffer)) * 100);
+                              (((float) other) / buffer_len) * 100);
 
   // Find the max and min occuring character in the string, in particular the
   // position in the count array of each character
